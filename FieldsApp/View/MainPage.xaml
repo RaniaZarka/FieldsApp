@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="FieldsApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FieldsApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <SplitView
+            x:Name="SplitView"
+            CompactPaneLength="50"
+            DisplayMode="CompactOverlay"
+            IsPaneOpen="False"
+            OpenPaneLength="150">
+            <SplitView.Pane>
+                <StackPanel Background="LightGray">
+                    <Button
+                        x:Name="BtnHamburger"
+                        
+                        Style="{StaticResource ButtonStyle}">
+                        <SymbolIcon Symbol="GlobalNavigationButton" />
+                    </Button>
+
+                    <Button
+                        Name="Account"
+                        Background="Transparent" > 
+
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Account" />
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Account" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Name="Stores"
+                        Background="Transparent">
+
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Shop"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Stores" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Name="Events"
+                        Background="Transparent">
+
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF133;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Events" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Name="Entertainment"
+                        Background="Transparent"
+                        >
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED55;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Entertainment" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Name="Map"
+                        Background="Transparent"
+                        >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Map" />
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Map" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Name="Game"
+                        Background="Transparent">
+
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Game" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <Button
+                        Name="Logout"
+                        Background="Transparent">
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE726;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Logout" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame Name="ContentFrame" Navigated="ContentFrame_Navigated" />
+            </SplitView.Content>
+
+        </SplitView>
+    </Grid>
+</Page>
