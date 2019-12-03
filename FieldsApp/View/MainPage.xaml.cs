@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FieldsApp.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,8 +39,13 @@ namespace FieldsApp
         }
 
         private void BtnHamburger_Click(object sender, RoutedEventArgs e)
-        { 
-            ContentFrame.Navigate(typeof(BtnHamburger));
+        {
+            SplitView.IsPaneOpen = SplitView.IsPaneOpen == false;
+        }
+
+        private void Stores_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(StoresList));
         }
     }
 }

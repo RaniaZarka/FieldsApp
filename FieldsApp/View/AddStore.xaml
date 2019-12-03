@@ -1,0 +1,122 @@
+﻿<Page
+    x:Class="FieldsApp.View.AddStore"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FieldsApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:FieldsApp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Margin" Value="20,20,20,20" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Margin" Value="10,10,10,10" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <!--  List Part  -->
+            <StackPanel>
+                <ListView ItemsSource="{Binding StoresCollection}" SelectedItem="{Binding SelectedStores, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="80"
+                                    Height="80"
+                                    Source="{Binding ImageSource}" />
+                                <TextBlock
+                                    Margin="10,10,10,10"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            
+            <StackPanel>
+
+                <StackPanel Width="300" Margin="10,10,10,10">
+                    <TextBox
+                        Header="Store name"
+                        PlaceholderText="Name"
+                        Text="{Binding Name, Mode=TwoWay}" />
+                    <TextBox
+                        Header="Store phone"
+                        PlaceholderText="Phone"
+                        Text="{Binding Phone, Mode=TwoWay}" />
+                    <TextBox
+                        Header="Store website"
+                        PlaceholderText="Website "
+                        Text="{Binding Website, Mode=TwoWay}" />
+                    <TextBox
+                        Header="Store Opening Hours  "
+                        PlaceholderText="Opening Hours "
+                        Text="{Binding OpeningHours, Mode=TwoWay}" />
+                    <TextBox
+                        Header="Store Category"
+                        PlaceholderText="Category "
+                        Text="{Binding Category, Mode=TwoWay}" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            Name="FileNameTextBox"
+                            Width="210"
+                            Height="60"
+                            VerticalAlignment="Top"
+                            BorderBrush="DarkGray"
+                            BorderThickness="2,2,0,2"
+                            Header="Store image"
+                            IsReadOnly="True"
+                            PlaceholderText="Image"
+                            Text="{Binding ImageSource, Mode=TwoWay}" />
+                        <Button
+                            Name="btnImageLoader"
+                            Grid.Column="1"
+                            Height="37"
+                            Margin="0,23"
+                            VerticalAlignment="Top"
+                            BorderBrush="DarkGray"
+                            BorderThickness="0,2,2,2"
+                            Click="btnImageLoader_Click"
+                            Content="Load Image" />
+                    </StackPanel>
+
+                </StackPanel>
+
+                <Button
+                    Command="{Binding AddStoreCommand}"
+                    Content="Add"
+                    Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <Image
+            Name="ImageViewer"
+            Grid.Column="1"
+            Width="400"
+            Height="400" />
+
+    </Grid>
+</Page>

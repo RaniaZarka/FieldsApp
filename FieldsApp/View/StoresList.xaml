@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="FieldsApp.View.StoresList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:FieldsApp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Margin" Value="20,20,20,20" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Margin" Value="10,10,10,10" />
+        </Style>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <ViewModel:StoresViewModel/>
+    </Page.DataContext>
+
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            
+            <StackPanel>
+                <ListView ItemsSource="{Binding StoreCollection}" SelectedItem="{Binding SelectedStore, Mode= TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image
+                                    Width="80"
+                                    Height="80"
+                                    Source="{Binding ImageSource}" />
+                                <TextBlock
+                                    Margin="10,10,10,10"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel> 
+            <StackPanel
+                    Margin="10,10,10,10"
+                    BorderBrush="DarkGray"
+                    BorderThickness="3,3,3,3"
+                    Orientation="Horizontal">
+                <Image
+                        Width="200"
+                        Height="200"
+                        Margin="10,10,10,10"
+                        VerticalAlignment="Top"
+                        Source="{Binding SelectedStore.ImageSource}" />
+                <StackPanel Margin="20,20,20,20">
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Name}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Phone}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Website}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.OpeningHours}" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Category}" />
+                </StackPanel>
+            </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Page>

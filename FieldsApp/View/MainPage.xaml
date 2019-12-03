@@ -26,7 +26,7 @@
                 <StackPanel Background="LightGray">
                     <Button
                         x:Name="BtnHamburger"
-                        
+                        Click="BtnHamburger_Click"
                         Style="{StaticResource ButtonStyle}">
                         <SymbolIcon Symbol="GlobalNavigationButton" />
                     </Button>
@@ -42,7 +42,8 @@
                     </Button>
                     <Button
                         Name="Stores"
-                        Background="Transparent">
+                        Background="Transparent" 
+                        Click="Stores_Click">
 
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Shop"/>
