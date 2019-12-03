@@ -18,12 +18,12 @@
     <Grid>
         <SplitView
             x:Name="SplitView"
-            CompactPaneLength="50"
+            CompactPaneLength="40"
             DisplayMode="CompactOverlay"
             IsPaneOpen="False"
             OpenPaneLength="150">
             <SplitView.Pane>
-                <StackPanel Background="LightGray">
+                <StackPanel Background="#FF7F98FF" HorizontalAlignment="Left" Width="150">
                     <Button
                         x:Name="BtnHamburger"
                         Click="BtnHamburger_Click"
@@ -33,7 +33,7 @@
 
                     <Button
                         Name="Account"
-                        Background="Transparent" > 
+                        Background="Transparent" >
 
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Account" />
@@ -94,7 +94,7 @@
                     <Button
                         Name="Logout"
                         Background="Transparent">
-                        
+
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE726;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Logout" /></TextBlock>
@@ -105,6 +105,7 @@
 
             <SplitView.Content>
                 <Frame Name="ContentFrame" Navigated="ContentFrame_Navigated" />
+
             </SplitView.Content>
 
         </SplitView>

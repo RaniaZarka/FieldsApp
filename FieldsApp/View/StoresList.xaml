@@ -14,24 +14,24 @@
 
     <Page.Resources>
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Width" Value="300" />
             <Setter Property="Margin" Value="20,20,20,20" />
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="Margin" Value="10,10,10,10" />
         </Style>
     </Page.Resources>
 
-    
+
 
 
     <Grid>
         <StackPanel Orientation="Horizontal">
-            
+
             <StackPanel>
-                <ListView ItemsSource="{Binding StoreCollection}" SelectedItem="{Binding SelectedStore, Mode= TwoWay}">
+                <ListView ItemsSource="{Binding StoreCollection}" SelectedItem="{Binding SelectedStore, Mode= TwoWay}" Width="210" RenderTransformOrigin="0.333,0.5" Height="775">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -49,27 +49,28 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-
-            <StackPanel> 
-            <StackPanel
+            <StackPanel Height="731" Width="220" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <StackPanel.RenderTransform>
+                    <CompositeTransform SkewY="0.273" TranslateY="-0.595"/>
+                </StackPanel.RenderTransform>
+                <StackPanel
                     Margin="10,10,10,10"
-                    BorderBrush="DarkGray"
-                    BorderThickness="3,3,3,3"
-                    Orientation="Horizontal">
-                <Image
-                        Width="200"
-                        Height="200"
+                    BorderBrush="Transparent"
+                   
+                    Orientation="Vertical" Height="736" Width="215" >
+                    <Image
+                        Width="205"
+                        Height="291"
                         Margin="10,10,10,10"
-                        VerticalAlignment="Top"
-                        Source="{Binding SelectedStore.ImageSource}" />
-                <StackPanel Margin="20,20,20,20">
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Name}" />
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Phone}" />
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Website}" />
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.OpeningHours}" />
-                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Category}" />
+                        Source="{Binding SelectedStore.ImageSource}" HorizontalAlignment="Center"/>
+                    <StackPanel RenderTransformOrigin="0.45,-0.695" Height="416" Width="217">
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Name}" Width="190" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Phone}" Width="195" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Website}" Width="195" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.OpeningHours}" Width="195" />
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedStore.Category}" Width="195" />
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>
