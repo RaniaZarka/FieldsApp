@@ -3,7 +3,6 @@ using FieldsApp.Model;
 using System.Windows.Input;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
-using JetBrains.Annotations;
 using Windows.Storage;
 using FieldsApp.Common;
 
@@ -73,7 +72,6 @@ namespace FieldsApp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
