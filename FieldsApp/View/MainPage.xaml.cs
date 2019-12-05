@@ -28,24 +28,19 @@ namespace FieldsApp
             this.InitializeComponent();
         }
 
-        private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-
-        }
-
-        private void Account_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
         private void BtnHamburger_Click(object sender, RoutedEventArgs e)
         {
-            SplitView.IsPaneOpen = SplitView.IsPaneOpen == false;
+            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
         }
 
         private void Stores_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(StoresList));
+        }
+
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(AccountPage));
         }
     }
 }

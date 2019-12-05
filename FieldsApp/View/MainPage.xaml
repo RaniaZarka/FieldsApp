@@ -10,36 +10,33 @@
 
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="50" />
-            <Setter Property="Height" Value="50" />
-            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="Transparent"/>
         </Style>
     </Page.Resources>
+
     <Grid>
         <SplitView
             x:Name="SplitView"
-            CompactPaneLength="40"
+            CompactPaneLength="50"
             DisplayMode="CompactOverlay"
             IsPaneOpen="False"
             OpenPaneLength="150">
             <SplitView.Pane>
-                <StackPanel Background="#FF7F98FF" HorizontalAlignment="Left" Width="150">
+                <StackPanel Background="LightGray">
                     <Button
                         x:Name="BtnHamburger"
                         Click="BtnHamburger_Click"
                         Style="{StaticResource ButtonStyle}">
                         <SymbolIcon Symbol="GlobalNavigationButton" />
                     </Button>
-
-                    <Button
-                        Name="Account"
-                        Background="Transparent" >
-
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Account" />
-                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Account" /></TextBlock>
-                        </StackPanel>
-                    </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnAccount" Style="{StaticResource ButtonStyle}" Click="Account_Click">
+                            <SymbolIcon Symbol="Contact"/>
+                        </Button>
+                        <TextBlock VerticalAlignment="Center" Text="Account" FontSize="15" Margin="10,0,0,0" FontFamily="Segoe UI" TextAlignment="Left"/>
+                    </StackPanel>
                     <Button
                         Name="Stores"
                         Background="Transparent" 
@@ -94,7 +91,7 @@
                     <Button
                         Name="Logout"
                         Background="Transparent">
-
+                        
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE726;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Logout" /></TextBlock>
@@ -104,8 +101,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame Name="ContentFrame" Navigated="ContentFrame_Navigated" />
-
+                <Frame Name="ContentFrame"/>
             </SplitView.Content>
 
         </SplitView>
