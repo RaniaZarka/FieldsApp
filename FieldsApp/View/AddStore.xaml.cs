@@ -29,8 +29,8 @@ namespace FieldsApp.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             
+
         }
 
         private void btnImageLoader_Click(object sender, RoutedEventArgs e)

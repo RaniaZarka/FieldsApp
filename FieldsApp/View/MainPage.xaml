@@ -89,6 +89,16 @@
                     </Button>
 
                     <Button
+                        Name="AddStore"
+                        
+                        Background="Transparent" Click="AddStore_Click">
+                      
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Add Store" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
                         Name="Logout"
                         Background="Transparent">
                         
