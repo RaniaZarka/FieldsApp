@@ -5,10 +5,46 @@
     xmlns:local="using:FieldsApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:FieldsApp.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.DataContext>
+        <viewModel:StoresViewModel/>
+    </Page.DataContext>
 
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel x:Name="stkpanelLogin" Visibility="Visible">
+                <StackPanel>
+                    <TextBox PlaceholderText="Email Address" Text="{Binding UserEmail, Mode=TwoWay}"/>
+                    <PasswordBox PlaceholderText="Password" Password="{Binding UserPassword, Mode=TwoWay}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="stkpanelUserInfo" Visibility="Visible">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="First Name:"/>
+                <TextBlock Text="{Binding LoggedInUser.FirstName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Last Name:"/>
+                <TextBlock Text="{Binding LoggedInUser.LastName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Email Address:"/>
+                <TextBlock Text="{Binding LoggedInUser.Email}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Phone Number:"/>
+                <TextBlock Text="{Binding LoggedInUser.PhoneNumber}"></TextBlock>
+            </StackPanel>
+                <TextBlock x:Name="textErrorText" Text="Incorrect login information." Foreground="Red" Visibility="{Binding WasLoginUnsuccessful}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnLogin" Content="Log In" Command="{Binding }"/>
+                <Button x:Name="btnLogout" Content="Log Out"/>
+            </StackPanel>
+            <Button x:Name="btnEdit" Content="Edit Information"/>
+        </StackPanel>
     </Grid>
 </Page>

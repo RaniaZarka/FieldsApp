@@ -123,7 +123,10 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Model\Stores.cs" />
     <Compile Include="Model\StoresCatalog.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UsersCatalog.cs" />
     <Compile Include="ViewModel\StoresViewModel.cs" />
+    <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
