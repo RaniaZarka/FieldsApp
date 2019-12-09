@@ -10,41 +10,72 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:StoresViewModel/>
+        <viewModel:UsersViewModel/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="420"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="Navy"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="Navy" BorderThickness="1" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GreyTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="15"/> 
+        </Style>
+        <Style x:Key="BlackTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <StackPanel x:Name="stkpanelLogin" Visibility="Visible">
+            <StackPanel x:Name="stkpanelLogin" Margin="15,0,15,0" Visibility="{Binding LoginFieldsVisibility}">
                 <StackPanel>
-                    <TextBox PlaceholderText="Email Address" Text="{Binding UserEmail, Mode=TwoWay}"/>
-                    <PasswordBox PlaceholderText="Password" Password="{Binding UserPassword, Mode=TwoWay}"/>
+                    <TextBlock Text="Please enter your login information."/>
+                    <TextBox PlaceholderText="Email Address" Text="{Binding UserEmail, Mode=TwoWay}" Margin="0,5,0,0"/>
+                    <PasswordBox PlaceholderText="Password" Password="{Binding UserPassword, Mode=TwoWay}" Margin="0,5,0,0"/>
                 </StackPanel>
+                <TextBlock x:Name="textErrorText" Text="Incorrect login information." Foreground="Red" Visibility="{Binding LoginErrorVisibility}"/>
             </StackPanel>
-            <StackPanel x:Name="stkpanelUserInfo" Visibility="Visible">
+            <StackPanel x:Name="stkpanelUserInfo" Margin="15,0,15,0" Visibility="{Binding UserInfoVisibility}">
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="First Name:"/>
-                <TextBlock Text="{Binding LoggedInUser.FirstName}"/>
+                <TextBlock Style="{StaticResource GreyTextStyle}" Text="First Name"/>
+                <TextBlock Style="{StaticResource BlackTextStyle}" Text="{Binding LoggedInUser.FirstName}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Last Name:"/>
-                <TextBlock Text="{Binding LoggedInUser.LastName}"/>
+            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                <TextBlock Style="{StaticResource GreyTextStyle}" Text="Last Name"/>
+                <TextBlock Style="{StaticResource BlackTextStyle}" Text="{Binding LoggedInUser.LastName}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Email Address:"/>
-                <TextBlock Text="{Binding LoggedInUser.Email}"></TextBlock>
+            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                <TextBlock Style="{StaticResource GreyTextStyle}" Text="Email Address"/>
+                <TextBlock Style="{StaticResource BlackTextStyle}" Text="{Binding LoggedInUser.Email}"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Phone Number:"/>
-                <TextBlock Text="{Binding LoggedInUser.PhoneNumber}"></TextBlock>
+            <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                <TextBlock Style="{StaticResource GreyTextStyle}" Text="Phone Number"/>
+                <TextBlock Style="{StaticResource BlackTextStyle}" Text="{Binding LoggedInUser.PhoneNumber}"/>
             </StackPanel>
-                <TextBlock x:Name="textErrorText" Text="Incorrect login information." Foreground="Red" Visibility="{Binding WasLoginUnsuccessful}"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnLogin" Content="Log In" Command="{Binding }"/>
-                <Button x:Name="btnLogout" Content="Log Out"/>
+            <StackPanel Orientation="Vertical" Margin="15,10,15,0">
+                <Button x:Name="btnLogin" Style="{StaticResource ButtonStyle}" Content="LOG IN" Command="{Binding LogInCommand}" Visibility="{Binding LoginFieldsVisibility}"/>
+                <Button x:Name="btnLogout" Style="{StaticResource ButtonStyle}" Content="LOG OUT" Command="{Binding LogOutCommand}" Visibility="{Binding UserInfoVisibility}"/>
+                <TextBlock Text="Don't have an account?" Margin="0,10,0,0" Visibility="{Binding LoginFieldsVisibility}"/>
+                <Button x:Name="btnCreateAccount" Style="{StaticResource ButtonStyle}" Content="CREATE AN ACCOUNT" Command="{Binding}" Visibility="{Binding LoginFieldsVisibility}" Click="btnCreateAccount_Click"/>
             </StackPanel>
-            <Button x:Name="btnEdit" Content="Edit Information"/>
+            <Button x:Name="btnEdit" Style="{StaticResource ButtonStyle}" Margin="15,0,15,0" Content="EDIT INFORMATION" Visibility="{Binding UserInfoVisibility}"/>
         </StackPanel>
     </Grid>
 </Page>

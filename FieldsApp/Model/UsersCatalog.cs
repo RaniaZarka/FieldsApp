@@ -38,17 +38,16 @@ namespace FieldsApp.Model
             _users.Add(new User(firstName, lastName, phoneNumber, email, password));
         }
 
-        public User LogInEmail(string email, string password)
+        //Checks if the entered information matches with one of the accounts
+        public User LogInEmailCheck(string email, string password)
         {
-            if (UsersCatalog.Instance.Users.FirstOrDefault(data => data.Email == email && data.Password == password) != null)
-            {
-                return UsersCatalog.Instance.Users.FirstOrDefault(data =>
-                    data.Email == email && data.Password == password);
-            }
-            else
-            {
-                return null;
-            }
+            return Users.FirstOrDefault(data => data.Email == email && data.Password == password);
+        }
+
+        //Actual logging in, only used after the method above checks for the existence of the account
+        public void LogInEmail(string email, string password)
+        {
+            CurrentUser = Users.FirstOrDefault(data => data.Email == email && data.Password == password);
         }
 
         public User LogInPhone(string phoneNumber, string password)
