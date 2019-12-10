@@ -324,6 +324,13 @@ namespace FieldsApp.ViewModel
                                         CollapseAllErrors();
                                         UsersCatalog.Instance.RegisterUser(RegisterFirstName, RegisterLastName, RegisterPhoneNumber, RegisterEmail, RegisterPassword);
                                         RegisterVisibility = Visibility.Collapsed;
+                                        RegisterFirstName = null;
+                                        RegisterLastName = null;
+                                        RegisterEmail = null;
+                                        RegisterPhoneNumber = null;
+                                        RegisterPassword = null;
+                                        RegisterConfirmPassword = null;
+                                        RegisterAgreement = false;
                                         RegisterConfirmationVisibility = Visibility.Visible;
                                         LoginFieldsVisibility = Visibility.Visible;
                                     }
