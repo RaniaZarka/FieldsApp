@@ -45,7 +45,8 @@
         <StackPanel Orientation="Vertical">
             <StackPanel x:Name="stkpanelLogin" Margin="15,0,15,0" Visibility="{Binding LoginFieldsVisibility}">
                 <StackPanel>
-                    <TextBlock Text="Please enter your login information."/>
+                    <TextBlock Text="Please enter your login information." Margin="0,0,0,10"/>
+                    <TextBlock Text="Account created successfully! Login using your info now." Visibility="{Binding RegisterConfirmationVisibility}"/>
                     <TextBox PlaceholderText="Email Address" Text="{Binding UserEmail, Mode=TwoWay}" Margin="0,5,0,0"/>
                     <PasswordBox PlaceholderText="Password" Password="{Binding UserPassword, Mode=TwoWay}" Margin="0,5,0,0"/>
                 </StackPanel>
@@ -73,9 +74,27 @@
                 <Button x:Name="btnLogin" Style="{StaticResource ButtonStyle}" Content="LOG IN" Command="{Binding LogInCommand}" Visibility="{Binding LoginFieldsVisibility}"/>
                 <Button x:Name="btnLogout" Style="{StaticResource ButtonStyle}" Content="LOG OUT" Command="{Binding LogOutCommand}" Visibility="{Binding UserInfoVisibility}"/>
                 <TextBlock Text="Don't have an account?" Margin="0,10,0,0" Visibility="{Binding LoginFieldsVisibility}"/>
-                <Button x:Name="btnCreateAccount" Style="{StaticResource ButtonStyle}" Content="CREATE AN ACCOUNT" Command="{Binding}" Visibility="{Binding LoginFieldsVisibility}" Click="btnCreateAccount_Click"/>
+                <Button x:Name="btnCreateAccount" Style="{StaticResource ButtonStyle}" Content="CREATE AN ACCOUNT" Command="{Binding OpenRegistrationCommand}" Visibility="{Binding LoginFieldsVisibility}"/>
             </StackPanel>
             <Button x:Name="btnEdit" Style="{StaticResource ButtonStyle}" Margin="15,0,15,0" Content="EDIT INFORMATION" Visibility="{Binding UserInfoVisibility}"/>
+        </StackPanel>
+        <StackPanel x:Name="stkRegistration" Margin="15,0,15,0" Visibility="{Binding RegisterVisibility}">
+            <TextBlock Text="Please enter your information." Margin="0,0,0,10"/>
+            <TextBox PlaceholderText="First Name" Margin="0,0,0,5" Text="{Binding RegisterFirstName, Mode=TwoWay}"/>
+            <TextBox PlaceholderText="Last Name" Margin="0,0,0,5" Text="{Binding RegisterLastName, Mode=TwoWay}"/>
+            <TextBox PlaceholderText="Email Address" Margin="0,0,0,5" Text="{Binding RegisterEmail, Mode=TwoWay}"/>
+            <TextBox PlaceholderText="Phone Number (12345678)" Margin="0,0,0,5" Text="{Binding RegisterPhoneNumber, Mode=TwoWay}"/>
+            <PasswordBox PlaceholderText="Password" Margin="0,0,0,5" Password="{Binding RegisterPassword, Mode=TwoWay}"/>
+            <PasswordBox PlaceholderText="Confirm Password" Margin="0,0,0,10" Password="{Binding RegisterConfirmPassword, Mode=TwoWay}"/>
+            <CheckBox Content="I agree to the use of my personal information by Field's for any and all purposes." Margin="0,0,0,10" IsChecked="{Binding RegisterAgreement, Mode=TwoWay}"/>
+            <TextBlock Text="Entered first name is not valid." Foreground="Red" Visibility="{Binding FirstNameErrorVisibility}"/>
+            <TextBlock Text="Entered last name is not valid." Foreground="Red" Visibility="{Binding LastNameErrorVisibility}"/>
+            <TextBlock Text="Entered email address is not valid." Foreground="Red" Visibility="{Binding EmailErrorVisibility}"/>
+            <TextBlock Text="Entered phone number is not valid." Foreground="Red" Visibility="{Binding PhoneNumberErrorVisibility}"/>
+            <TextBlock Text="Password must be at least 6 characters long." Foreground="Red" Visibility="{Binding PasswordErrorVisibility}"/>
+            <TextBlock Text="Passwords do not match." Foreground="Red" Visibility="{Binding PasswordConfirmErrorVisibility}"/>
+            <TextBlock Text="You must agree to the use of your personal information." Foreground="Red" Visibility="{Binding AgreementErrorVisibility}"/>
+            <Button Style="{StaticResource ButtonStyle}" Content="CREATE ACCOUNT" Command="{Binding RegisterCommand}"/>
         </StackPanel>
     </Grid>
 </Page>

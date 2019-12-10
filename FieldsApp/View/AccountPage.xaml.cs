@@ -27,10 +27,5 @@ namespace FieldsApp.View
         {
             this.InitializeComponent();
         }
-
-        private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

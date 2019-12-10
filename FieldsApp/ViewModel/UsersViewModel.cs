@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.Storage;
@@ -18,13 +19,29 @@ namespace FieldsApp.ViewModel
     public class UsersViewModel : INotifyPropertyChanged
     {
         private UsersCatalog _usersCatalog;
-        private readonly DeleteCommand _deletionCommand;
         private string _userEmail;
         private string _userPassword;
         private User _loggedInUser;
         private Visibility _loginErrorVisibility = Visibility.Collapsed;
         private Visibility _loginFieldsVisibility = Visibility.Visible;
         private Visibility _userInfoVisibility = Visibility.Collapsed;
+        private Visibility _registrationVisibility = Visibility.Collapsed;
+        private Visibility _registrationConfirmationVisibility = Visibility.Collapsed;
+
+        private string _registerEmail;
+        private string _registerFirstName;
+        private string _registerLastName;
+        private string _registerPhoneNumber;
+        private string _registerPassword;
+        private string _registerConfirmPassword;
+        private bool _registerAgreement;
+        private Visibility _emailErrorVisibility = Visibility.Collapsed;
+        private Visibility _firstNameErrorVisibility = Visibility.Collapsed;
+        private Visibility _lastNameErrorVisibility = Visibility.Collapsed;
+        private Visibility _phoneNumberErrorVisibility = Visibility.Collapsed;
+        private Visibility _passwordErrorVisibility = Visibility.Collapsed;
+        private Visibility _confirmPasswordErrorVisibility = Visibility.Collapsed;
+        private Visibility _agreementErrorVisibility = Visibility.Collapsed;
 
         public UsersViewModel()
         {
@@ -37,6 +54,8 @@ namespace FieldsApp.ViewModel
             _usersCatalog = UsersCatalog.Instance;
             LogInCommand = new RelayCommand(LogIn);
             LogOutCommand = new RelayCommand(LogOut);
+            RegisterCommand = new RelayCommand(RegisterUser);
+            OpenRegistrationCommand = new RelayCommand(OpenRegistration);
         }
 
         public User LoggedInUser {
@@ -57,7 +76,6 @@ namespace FieldsApp.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public string UserPassword
         {
             get { return _userPassword; }
@@ -77,7 +95,6 @@ namespace FieldsApp.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Visibility LoginFieldsVisibility
         {
             get { return _loginFieldsVisibility; }
@@ -87,7 +104,6 @@ namespace FieldsApp.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public Visibility UserInfoVisibility
         {
             get { return _userInfoVisibility; }
@@ -97,9 +113,157 @@ namespace FieldsApp.ViewModel
                 OnPropertyChanged();
             }
         }
+        public Visibility RegisterVisibility
+        {
+            get { return _registrationVisibility; }
+            set
+            {
+                _registrationVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility RegisterConfirmationVisibility
+        {
+            get { return _registrationConfirmationVisibility; }
+            set
+            {
+                _registrationConfirmationVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string RegisterFirstName
+        {
+            get { return _registerFirstName; }
+            set
+            {
+                _registerFirstName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string RegisterLastName
+        {
+            get { return _registerLastName; }
+            set
+            {
+                _registerLastName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string RegisterEmail
+        {
+            get { return _registerEmail; }
+            set
+            {
+                _registerEmail = value;
+                OnPropertyChanged();
+            }
+        }
+        public string RegisterPhoneNumber
+        {
+            get { return _registerPhoneNumber; }
+            set
+            {
+                _registerPhoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
+        public string RegisterPassword
+        {
+            get { return _registerPassword; }
+            set
+            {
+                _registerPassword = value;
+                OnPropertyChanged();
+            }
+        }
+        public string RegisterConfirmPassword
+        {
+            get { return _registerConfirmPassword; }
+            set
+            {
+                _registerConfirmPassword = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool RegisterAgreement
+        {
+            get { return _registerAgreement; }
+            set
+            {
+                _registerAgreement = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility EmailErrorVisibility
+        {
+            get { return _emailErrorVisibility; }
+            set
+            {
+                _emailErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility FirstNameErrorVisibility
+        {
+            get { return _firstNameErrorVisibility; }
+            set
+            {
+                _firstNameErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility LastNameErrorVisibility
+        {
+            get { return _lastNameErrorVisibility; }
+            set
+            {
+                _lastNameErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility PhoneNumberErrorVisibility
+        {
+            get { return _phoneNumberErrorVisibility; }
+            set
+            {
+                _phoneNumberErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility PasswordErrorVisibility
+        {
+            get { return _passwordErrorVisibility; }
+            set
+            {
+                _passwordErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility PasswordConfirmErrorVisibility
+        {
+            get { return _confirmPasswordErrorVisibility; }
+            set
+            {
+                _confirmPasswordErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility AgreementErrorVisibility
+        {
+            get { return _agreementErrorVisibility; }
+            set
+            {
+                _agreementErrorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand LogInCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
+        public ICommand OpenRegistrationCommand { get; set; }
 
         /*First calls a method with the User return type to check if the user exists, then calls a method which logs the user in in the
          UsersCatalog class
@@ -114,6 +278,7 @@ namespace FieldsApp.ViewModel
                 UserEmail = null;
                 UserPassword = null;
                 LoginFieldsVisibility = Visibility.Collapsed;
+                RegisterConfirmationVisibility = Visibility.Collapsed;
                 UserInfoVisibility = Visibility.Visible;
             }
             else
@@ -132,8 +297,89 @@ namespace FieldsApp.ViewModel
             UserInfoVisibility = Visibility.Collapsed;
         }
 
+        public void RegisterUser()
+        {
+            CollapseAllErrors();
+            //Checks if string only contains letters
+            if (Regex.IsMatch(RegisterFirstName, @"^[a-zA-Z]+$"))
+            {
+                CollapseAllErrors();
+                if (Regex.IsMatch(RegisterLastName, @"^[a-zA-Z]+$"))
+                {
+                    CollapseAllErrors();
+                    if (RegisterEmail.Contains('@') && RegisterEmail.Contains('.'))
+                    {
+                        CollapseAllErrors();
+                        if (Regex.IsMatch(RegisterPhoneNumber, @"^[0-9]+$"))
+                        {
+                            CollapseAllErrors();
+                            if (RegisterPassword != null && RegisterPassword.Length >= 6)
+                            {
+                                CollapseAllErrors();
+                                if (RegisterConfirmPassword != null && RegisterConfirmPassword == RegisterPassword)
+                                {
+                                    CollapseAllErrors();
+                                    if (RegisterAgreement)
+                                    {
+                                        CollapseAllErrors();
+                                        UsersCatalog.Instance.RegisterUser(RegisterFirstName, RegisterLastName, RegisterPhoneNumber, RegisterEmail, RegisterPassword);
+                                        RegisterVisibility = Visibility.Collapsed;
+                                        RegisterConfirmationVisibility = Visibility.Visible;
+                                        LoginFieldsVisibility = Visibility.Visible;
+                                    }
+                                    else
+                                    {
+                                        AgreementErrorVisibility = Visibility.Visible;
+                                    }
+                                }
+                                else
+                                {
+                                    PasswordConfirmErrorVisibility = Visibility.Visible;
+                                }
+                            }
+                            else
+                            {
+                                PasswordErrorVisibility = Visibility.Visible;
+                            }
+                        }
+                        else
+                        {
+                            PhoneNumberErrorVisibility = Visibility.Visible;
+                        }
+                    }
+                    else
+                    {
+                        EmailErrorVisibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    LastNameErrorVisibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                FirstNameErrorVisibility = Visibility.Visible;
+            }
+        }
 
-        public DeleteCommand DeletionCommand => _deletionCommand;
+        public void OpenRegistration()
+        {
+            LoginFieldsVisibility = Visibility.Collapsed;
+            LoginErrorVisibility = Visibility.Collapsed;
+            RegisterVisibility = Visibility.Visible;
+        }
+
+        private void CollapseAllErrors()
+        {
+            FirstNameErrorVisibility = Visibility.Collapsed;
+            LastNameErrorVisibility = Visibility.Collapsed;
+            EmailErrorVisibility = Visibility.Collapsed;
+            PhoneNumberErrorVisibility = Visibility.Collapsed;
+            PasswordErrorVisibility = Visibility.Collapsed;
+            PasswordConfirmErrorVisibility = Visibility.Collapsed;
+            AgreementErrorVisibility = Visibility.Collapsed;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
