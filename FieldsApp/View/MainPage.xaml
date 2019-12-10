@@ -19,7 +19,7 @@
     <Grid>
         <SplitView
             x:Name="SplitView"
-            CompactPaneLength="50"
+            CompactPaneLength="50 "
             DisplayMode="CompactOverlay"
             IsPaneOpen="False"
             OpenPaneLength="150">
@@ -89,19 +89,19 @@
                     </Button>
 
                     <Button
-                        Name="AddStore"
+                        Name="Admin"
                         
-                        Background="Transparent" Click="AddStore_Click">
-                      
+                        Background="Transparent" Click="Admin_Click">
+
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"/>
-                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Add Store" /></TextBlock>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8CF;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Admin" /></TextBlock>
                         </StackPanel>
                     </Button>
                     <Button
                         Name="Logout"
                         Background="Transparent">
-                        
+
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE726;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Logout" /></TextBlock>

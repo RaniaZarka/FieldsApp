@@ -11,7 +11,6 @@ namespace FieldsApp.ViewModel
 {
     public class StoresViewModel : INotifyPropertyChanged
     {
-        private Stores _domainObject;
         private readonly StoresCatalog _storesCatalog;
         private Stores _selectedStore;
         private readonly DeleteCommand _deletionCommand;

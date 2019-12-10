@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewModel:StoresViewModel/>
+        <viewModel:UsersViewModel/>
     </Page.DataContext>
 
     <Grid>

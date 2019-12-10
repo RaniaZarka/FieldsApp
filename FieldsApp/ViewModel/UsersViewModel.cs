@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Windows.Storage;
 using FieldsApp.Common;
 using FieldsApp.Model;
+using FieldsApp.View;
 
 namespace FieldsApp.ViewModel
 {
@@ -29,6 +30,7 @@ namespace FieldsApp.ViewModel
         {
             _usersCatalog = UsersCatalog.Instance;
             LogInCommand = new RelayCommand(LogIn);
+           
         }
 
         public ICommand AddStoreCommand { get; set; }

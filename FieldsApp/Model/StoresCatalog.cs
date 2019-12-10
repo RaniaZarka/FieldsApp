@@ -27,8 +27,27 @@ namespace FieldsApp.Model
         };
 
         public ObservableCollection<Stores> Stores => _StoresCollection;
-        
 
+        public ObservableCollection<Stores> _stores
+        {
+            get { return _stores; }
+        }
+
+        private static StoresCatalog _instance = null;
+       
+        private static StoresCatalog Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new StoresCatalog();
+                }
+                return _instance;
+            }
+        }
+       
+        
         public void AddStore(Stores s)
         {
             _StoresCollection.Add(s);
