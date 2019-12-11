@@ -142,6 +142,9 @@
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Info.xaml.cs">
+      <DependentUpon>Info.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -166,10 +169,13 @@
     <Content Include="Assets\BR.jpg" />
     <Content Include="Assets\burgerking.jpeg" />
     <Content Include="Assets\Dalle-Valle.jpeg" />
+    <Content Include="Assets\FB.png" />
     <Content Include="Assets\fields logo.png" />
+    <Content Include="Assets\Fields.jpeg" />
     <Content Include="Assets\Food-Lounge-English_2.jpg" />
     <Content Include="Assets\Halloween.jpg" />
     <Content Include="Assets\hm.png" />
+    <Content Include="Assets\Insta.jpg" />
     <Content Include="Assets\kaufmann.jpeg" />
     <Content Include="Assets\magasin.png" />
     <Content Include="Assets\matas.jpeg" />
@@ -204,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

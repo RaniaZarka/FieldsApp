@@ -40,11 +40,7 @@ namespace FieldsApp
             SplitView.IsPaneOpen = false;
         }
 
-        private void Admin_Click(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Navigate(typeof(AddStore));
-            SplitView.IsPaneOpen = false;
-        }
+        
 
         private void Events_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +51,19 @@ namespace FieldsApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(HomePage));
+            SplitView.IsPaneOpen = false;
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+
+            ContentFrame.Navigate(typeof(Info));
+            SplitView.IsPaneOpen = false;
+        }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(AddStore));
             SplitView.IsPaneOpen = false;
         }
     }

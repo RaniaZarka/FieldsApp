@@ -8,10 +8,7 @@ namespace FieldsApp.Model
 {
    public class Stores
     {
-        public Stores()
-        {
-        }
-
+      
         public Stores(string name, string phone, string website, string openingHours,string category, string picture)
         {
             Name = name;

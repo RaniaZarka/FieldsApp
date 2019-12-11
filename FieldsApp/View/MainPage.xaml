@@ -93,6 +93,14 @@
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Admin" /></TextBlock>
                         </StackPanel>
                     </Button>
+                    <Button
+                        Name="Info"
+                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="Info_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Info" /></TextBlock>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </SplitView.Pane>
 
