@@ -76,7 +76,20 @@
                 <TextBlock Text="Don't have an account?" Margin="0,10,0,0" Visibility="{Binding LoginFieldsVisibility}"/>
                 <Button x:Name="btnCreateAccount" Style="{StaticResource ButtonStyle}" Content="CREATE AN ACCOUNT" Command="{Binding OpenRegistrationCommand}" Visibility="{Binding LoginFieldsVisibility}"/>
             </StackPanel>
-            <Button x:Name="btnEdit" Style="{StaticResource ButtonStyle}" Margin="15,0,15,0" Content="EDIT INFORMATION" Visibility="{Binding UserInfoVisibility}"/>
+            <Button x:Name="btnEdit" Style="{StaticResource ButtonStyle}" Margin="15,0,15,0" Content="EDIT INFORMATION" Command="{Binding OpenEditCommand}" Visibility="{Binding UserInfoVisibility}"/>
+        </StackPanel>
+        <StackPanel Margin="15,0,15,0" Visibility="{Binding EditInfoVisibility}">
+            <TextBlock Text="Please enter your new information." Margin="0,0,0,10"/>
+            <TextBlock Text="First Name" Style="{StaticResource GreyTextStyle}"/>
+            <TextBox PlaceholderText="{Binding LoggedInUser.FirstName}" Text="{Binding EditFirstName, Mode=TwoWay}"/>
+            <TextBlock Text="Last Name" Style="{StaticResource GreyTextStyle}" Margin="0,5,0,0"/>
+            <TextBox PlaceholderText="{Binding LoggedInUser.LastName}" Text="{Binding EditLastName, Mode=TwoWay}"/>
+            <TextBlock Text="Phone Number" Style="{StaticResource GreyTextStyle}" Margin="0,5,0,0"/>
+            <TextBox PlaceholderText="{Binding LoggedInUser.PhoneNumber}" Text="{Binding EditPhoneNumber, Mode=TwoWay}"/>
+            <TextBlock Text="Entered first name is not valid." Foreground="Red" Visibility="{Binding FirstNameErrorVisibility}"/>
+            <TextBlock Text="Entered last name is not valid." Foreground="Red" Visibility="{Binding LastNameErrorVisibility}"/>
+            <TextBlock Text="Entered phone number is not valid." Foreground="Red" Visibility="{Binding PhoneNumberErrorVisibility}"/>
+            <Button Content="CONFIRM CHANGES" Margin="0,5,0,0" Style="{StaticResource ButtonStyle}" Command="{Binding ConfirmEditCommand}"/>
         </StackPanel>
         <StackPanel x:Name="stkRegistration" Margin="15,0,15,0" Visibility="{Binding RegisterVisibility}">
             <TextBlock Text="Please enter your information." Margin="0,0,0,10"/>

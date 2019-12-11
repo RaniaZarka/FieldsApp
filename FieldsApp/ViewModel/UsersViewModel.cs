@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -43,6 +44,11 @@ namespace FieldsApp.ViewModel
         private Visibility _confirmPasswordErrorVisibility = Visibility.Collapsed;
         private Visibility _agreementErrorVisibility = Visibility.Collapsed;
 
+        private Visibility _editInfoVisibility = Visibility.Collapsed;
+        private string _editFirstName;
+        private string _editLastName;
+        private string _editPhoneNumber;
+
         public UsersViewModel()
         {
             //Checks if there is a logged in user to make sure that you don't see the login page again after changing pages
@@ -56,6 +62,8 @@ namespace FieldsApp.ViewModel
             LogOutCommand = new RelayCommand(LogOut);
             RegisterCommand = new RelayCommand(RegisterUser);
             OpenRegistrationCommand = new RelayCommand(OpenRegistration);
+            OpenEditCommand = new RelayCommand(OpenEditAccount);
+            ConfirmEditCommand = new RelayCommand(ConfirmEdit);
         }
 
         public User LoggedInUser {
@@ -260,10 +268,49 @@ namespace FieldsApp.ViewModel
             }
         }
 
+        public Visibility EditInfoVisibility
+        {
+            get { return _editInfoVisibility; }
+            set
+            {
+                _editInfoVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditFirstName
+        {
+            get { return _editFirstName; }
+            set
+            {
+                _editFirstName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditLastName
+        {
+            get { return _editLastName; }
+            set
+            {
+                _editLastName = value;
+                OnPropertyChanged();
+            }
+        }
+        public string EditPhoneNumber
+        {
+            get { return _editPhoneNumber; }
+            set
+            {
+                _editPhoneNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand LogInCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
         public ICommand OpenRegistrationCommand { get; set; }
+        public ICommand OpenEditCommand { get; set; }
+        public ICommand ConfirmEditCommand { get; set; }
 
         /*First calls a method with the User return type to check if the user exists, then calls a method which logs the user in in the
          UsersCatalog class
@@ -377,6 +424,51 @@ namespace FieldsApp.ViewModel
             RegisterVisibility = Visibility.Visible;
         }
 
+        public void OpenEditAccount()
+        {
+            LoginFieldsVisibility = Visibility.Collapsed;
+            RegisterVisibility = Visibility.Collapsed;
+            CollapseAllErrors();
+            UserInfoVisibility = Visibility.Collapsed;
+            EditInfoVisibility = Visibility.Visible;
+        }
+
+        public void ConfirmEdit()
+        {
+            if (EditFirstName != null && Regex.IsMatch(EditFirstName, @"^[a-zA-Z]+$"))
+            {
+                CollapseAllErrors();
+                if (EditLastName != null && Regex.IsMatch(EditLastName, @"^[a-zA-Z]+$"))
+                {
+                    CollapseAllErrors();
+                    if (EditPhoneNumber != null && Regex.IsMatch(EditPhoneNumber, @"^[0-9]+$"))
+                    {
+                        CollapseAllErrors();
+                        UsersCatalog.Instance.EditUser(LoggedInUser, EditFirstName, EditLastName, EditPhoneNumber);
+                        EditFirstName = null;
+                        EditLastName = null;
+                        EditPhoneNumber = null;
+                        EditInfoVisibility = Visibility.Collapsed;
+                        UserInfoVisibility = Visibility.Visible;
+                        //This triggers OnPropertyChanged() to refresh the page, there's probably a better way to do this but this is easy
+                        LoggedInUser = LoggedInUser;
+                    }
+                    else
+                    {
+                        PhoneNumberErrorVisibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    LastNameErrorVisibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                FirstNameErrorVisibility = Visibility.Visible;
+            }
+        }
+
         private void CollapseAllErrors()
         {
             FirstNameErrorVisibility = Visibility.Collapsed;
@@ -386,6 +478,7 @@ namespace FieldsApp.ViewModel
             PasswordErrorVisibility = Visibility.Collapsed;
             PasswordConfirmErrorVisibility = Visibility.Collapsed;
             AgreementErrorVisibility = Visibility.Collapsed;
+            LoginErrorVisibility = Visibility.Collapsed;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

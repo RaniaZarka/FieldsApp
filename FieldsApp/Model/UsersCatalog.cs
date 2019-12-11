@@ -50,19 +50,16 @@ namespace FieldsApp.Model
             CurrentUser = Users.FirstOrDefault(data => data.Email == email && data.Password == password);
         }
 
-        public User LogInPhone(string phoneNumber, string password)
+        /*public User LogInPhone(string phoneNumber, string password)
         {
-            if (UsersCatalog.Instance.Users.FirstOrDefault(data => data.PhoneNumber == phoneNumber && data.Password == password) != null)
-            {
-                CurrentUser = UsersCatalog.Instance.Users.FirstOrDefault(data =>
-                    data.Email == phoneNumber && data.Password == password);
-                return UsersCatalog.Instance.Users.FirstOrDefault(data =>
-                    data.Email == phoneNumber && data.Password == password);
-            }
-            else
-            {
-                return null;
-            }
+
+        }*/
+
+        public void EditUser(User loggedInUser, string newFirstName, string newLastName, string newNumber)
+        {
+            loggedInUser.FirstName = newFirstName;
+            loggedInUser.LastName = newLastName;
+            loggedInUser.PhoneNumber = newNumber;
         }
 
         public void LogOut()
