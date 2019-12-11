@@ -10,38 +10,51 @@
 
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="50"/>
-            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="35"/>
             <Setter Property="Background" Value="Transparent"/>
         </Style>
     </Page.Resources>
 
     <Grid>
+        <CommandBar OverflowButtonVisibility="Collapsed" HorizontalContentAlignment="Center" IsDynamicOverflowEnabled="False" FlowDirection="RightToLeft" Background="GhostWhite">
+            <AppBarButton x:Name="HamburgerButton" Icon="GlobalNavigationButton" HorizontalAlignment="Left" Click="BtnHamburger_Click"/>
+            <CommandBar.Content>
+                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="../Assets/fields logo.png" RenderTransformOrigin="0.5,0.5" Margin="0,-23,-50,0" Width="360" Height="85">
+                    <Image.RenderTransform>
+                        <CompositeTransform ScaleY="0.5" ScaleX="0.5"/>
+                    </Image.RenderTransform>
+                </Image>
+            </CommandBar.Content>
+        </CommandBar>
         <SplitView
             x:Name="SplitView"
-            CompactPaneLength="50 "
-            DisplayMode="CompactOverlay"
+            DisplayMode="Overlay"
             IsPaneOpen="False"
-            OpenPaneLength="150">
+            VerticalAlignment="Stretch"
+            Margin="0,40,0,0"
+            OpenPaneLength="200"
+            PaneBackground="GhostWhite"
+            Foreground="Black">
             <SplitView.Pane>
-                <StackPanel Background="LightGray">
+                <StackPanel>
                     <Button
-                        x:Name="BtnHamburger"
-                        Click="BtnHamburger_Click"
-                        Style="{StaticResource ButtonStyle}">
-                        <SymbolIcon Symbol="GlobalNavigationButton" />
+                        Click="Button_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Home"/>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Home"/></TextBlock>
+                        </StackPanel>
                     </Button>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="btnAccount" Style="{StaticResource ButtonStyle}" Click="Account_Click">
+                    <Button
+                        Click="Account_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Contact"/>
-                        </Button>
-                        <TextBlock VerticalAlignment="Center" Text="Account" FontSize="15" Margin="10,0,0,0" FontFamily="Segoe UI" TextAlignment="Left"/>
-                    </StackPanel>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Account"/></TextBlock>
+                        </StackPanel>
+                    </Button>
                     <Button
                         Name="Stores"
-                        Background="Transparent" 
-                        Click="Stores_Click">
-
+                        Click="Stores_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Shop"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Stores" /></TextBlock>
@@ -49,62 +62,35 @@
                     </Button>
 
                     <Button
-                        Name="Events"
-                        Background="Transparent" Click="Events_Click">
-
+                        Name="Events" Click="Events_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF133;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Events" /></TextBlock>
                         </StackPanel>
                     </Button>
-
-                    <Button
-                        Name="Entertainment"
-                        Background="Transparent"
-                        >
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xED55;"/>
-                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Entertainment" /></TextBlock>
-                        </StackPanel>
-                    </Button>
-
                     <Button
                         Name="Map"
-                        Background="Transparent"
+                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left"
                         >
                         <StackPanel Orientation="Horizontal">
                             <SymbolIcon Symbol="Map" />
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Map" /></TextBlock>
                         </StackPanel>
                     </Button>
-
                     <Button
                         Name="Game"
-                        Background="Transparent">
-
+                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Game" /></TextBlock>
                         </StackPanel>
                     </Button>
-
                     <Button
                         Name="Admin"
-                        
-                        Background="Transparent" Click="Admin_Click">
-
+                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="Admin_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8CF;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Admin" /></TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button
-                        Name="Logout"
-                        Background="Transparent">
-
-                        <StackPanel Orientation="Horizontal">
-                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE726;"/>
-                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Logout" /></TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>

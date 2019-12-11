@@ -139,6 +139,9 @@
     <Compile Include="View\Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,8 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\34195444_10155093929295904_5316082262951854080_n.jpg" />
+    <Content Include="Assets\asdgtrfhujkl.png" />
     <Content Include="Assets\benny.JPG" />
     <Content Include="Assets\bilka.jpeg" />
     <Content Include="Assets\BlackFriday.jpg" />
@@ -161,13 +166,17 @@
     <Content Include="Assets\BR.jpg" />
     <Content Include="Assets\burgerking.jpeg" />
     <Content Include="Assets\Dalle-Valle.jpeg" />
+    <Content Include="Assets\fields logo.png" />
+    <Content Include="Assets\Food-Lounge-English_2.jpg" />
     <Content Include="Assets\Halloween.jpg" />
     <Content Include="Assets\hm.png" />
     <Content Include="Assets\kaufmann.jpeg" />
     <Content Include="Assets\magasin.png" />
     <Content Include="Assets\matas.jpeg" />
     <Content Include="Assets\nameit.png" />
+    <Content Include="Assets\Ny_1.jpg" />
     <Content Include="Assets\SummerSale.jpg" />
+    <Content Include="Assets\welcome-to-field-s-383.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -191,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Events.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

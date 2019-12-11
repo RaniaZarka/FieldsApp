@@ -14,6 +14,7 @@ namespace FieldsApp
         public MainPage()
         {
             this.InitializeComponent();
+            ContentFrame.Navigate(typeof(HomePage));
         }
 
         private void BtnHamburger_Click(object sender, RoutedEventArgs e)
@@ -24,26 +25,37 @@ namespace FieldsApp
         private void Stores_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(StoresList));
+            SplitView.IsPaneOpen = false;
         }
 
         private void Account_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(AccountPage));
+            SplitView.IsPaneOpen = false;
         }
 
         private void AddStore_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(AddStore));
+            SplitView.IsPaneOpen = false;
         }
 
         private void Admin_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(AddStore));
+            SplitView.IsPaneOpen = false;
         }
 
         private void Events_Click(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(Events));
+            SplitView.IsPaneOpen = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(HomePage));
+            SplitView.IsPaneOpen = false;
         }
     }
 }
