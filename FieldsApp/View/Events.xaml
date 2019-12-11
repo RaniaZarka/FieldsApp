@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="FieldsApp.View.Events"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FieldsApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:FieldsApp.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:EventsViewModel/>
+    </Page.DataContext>
+
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Margin" Value="20,20,20,20" />
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="10,10,10,10" />
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+
+            <StackPanel>
+                <ListView ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvents, Mode=TwoWay}" Width="436" RenderTransformOrigin="0.541,0.582" Height="765">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Width="649" Height="175">
+                                <Image
+                                    Stretch="UniformToFill"
+                                    Width="250"
+                                    Height="180"
+                                    Source="{Binding ImageSource}" RenderTransformOrigin="0.474,0.498" />
+                                <StackPanel RenderTransformOrigin="0.45,-0.695" Height="170" Width="500">
+                                    <TextBlock Text="{Binding Name}" Width="405" Margin="40,20,0,0" FontSize="10"/>
+                                    <TextBlock Foreground="Red" Text="{Binding Phone}" Width="447" Margin="0,0,0,0" FontSize="20" FontStyle="Normal" FontWeight="Bold" SelectionHighlightColor="#FF86092D" Height="28"/>
+                                    <TextBlock Text="{Binding Website}" Width="399" Margin="0,0,-1,0" FontSize="10"/>
+                                    <TextBlock Text="{Binding OpeningHours}" Width="396" Margin="30,0,0,0"/>
+                                    <TextBlock Text="{Binding Category}" Width="373" Margin="0,0,0,0" FontSize="10" Height="15" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

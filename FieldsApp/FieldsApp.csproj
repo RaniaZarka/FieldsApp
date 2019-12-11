@@ -121,10 +121,13 @@
     </Compile>
     <Compile Include="Common\DeleteCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Model\EventCatalog.cs" />
+    <Compile Include="Model\Events.cs" />
     <Compile Include="Model\Stores.cs" />
     <Compile Include="Model\StoresCatalog.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UsersCatalog.cs" />
+    <Compile Include="ViewModel\EventsViewModel.cs" />
     <Compile Include="ViewModel\StoresViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\AccountPage.xaml.cs">
@@ -132,6 +135,9 @@
     </Compile>
     <Compile Include="View\AddStore.xaml.cs">
       <DependentUpon>AddStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Events.xaml.cs">
+      <DependentUpon>Events.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -149,16 +155,19 @@
   <ItemGroup>
     <Content Include="Assets\benny.JPG" />
     <Content Include="Assets\bilka.jpeg" />
+    <Content Include="Assets\BlackFriday.jpg" />
     <Content Include="Assets\bolia.jpeg" />
     <Content Include="Assets\bounce.jpeg" />
     <Content Include="Assets\BR.jpg" />
     <Content Include="Assets\burgerking.jpeg" />
     <Content Include="Assets\Dalle-Valle.jpeg" />
+    <Content Include="Assets\Halloween.jpg" />
     <Content Include="Assets\hm.png" />
     <Content Include="Assets\kaufmann.jpeg" />
     <Content Include="Assets\magasin.png" />
     <Content Include="Assets\matas.jpeg" />
     <Content Include="Assets\nameit.png" />
+    <Content Include="Assets\SummerSale.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -178,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Events.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

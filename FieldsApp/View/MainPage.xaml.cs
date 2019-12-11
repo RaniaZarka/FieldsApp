@@ -40,5 +40,10 @@ namespace FieldsApp
         {
             ContentFrame.Navigate(typeof(AddStore));
         }
+
+        private void Events_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Events));
+        }
     }
 }

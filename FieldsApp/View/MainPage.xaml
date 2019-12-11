@@ -50,7 +50,7 @@
 
                     <Button
                         Name="Events"
-                        Background="Transparent">
+                        Background="Transparent" Click="Events_Click">
 
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF133;"/>

@@ -15,6 +15,7 @@ namespace FieldsApp.ViewModel
         private Stores _selectedStore;
         private readonly DeleteCommand _deletionCommand;
         private string _imageSource;
+       
 
         public StoresViewModel()
         {
@@ -22,6 +23,7 @@ namespace FieldsApp.ViewModel
             _selectedStore = null;
             AddStoreCommand = new RelayCommand(AddStore);
             _deletionCommand = new DeleteCommand(_storesCatalog, this);
+            
         }
 
         public ICommand AddStoreCommand { get; set; }
@@ -37,7 +39,7 @@ namespace FieldsApp.ViewModel
             //  set => _imageSource = "..\\Assets\\" + value;
             set => _imageSource = ApplicationData.Current.LocalFolder.Path + "\\" + value;
         }
-
+        
         public Stores SelectedStore
         {
             get => _selectedStore;
