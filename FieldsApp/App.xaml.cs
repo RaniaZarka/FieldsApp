@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FieldsApp.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -68,6 +69,7 @@ namespace FieldsApp
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
+               
                 // Ensure the current window is active
                 Window.Current.Activate();
             }

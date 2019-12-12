@@ -16,10 +16,12 @@ namespace FieldsApp.ViewModel
         private readonly DeleteCommand _deletionCommand;
         private string _imageSource;
        
+       
 
         public StoresViewModel()
         {
-            _storesCatalog = new StoresCatalog();
+            // _storesCatalog = new StoresCatalog();
+            _storesCatalog =  StoresCatalog.Instance;
             _selectedStore = null;
             AddStoreCommand = new RelayCommand(AddStore);
             _deletionCommand = new DeleteCommand(_storesCatalog, this);

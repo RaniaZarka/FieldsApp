@@ -21,8 +21,8 @@
                 Source  ="../Assets/Fields.jpeg" />
         </StackPanel>
         <StackPanel Orientation="Vertical" Margin="0,250,240,208">
-            <TextBlock Style="{StaticResource TextBlockStyle}" Text="    ADDRESS" Margin="20,0,20,10" RequestedTheme="Default" FontWeight="Bold" />
-            <TextBlock Style="{StaticResource TextBlockStyle}" Text="Field's" Margin="40,10,20,10" Width="131"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="ADDRESS" Margin="55,0,20,10" RequestedTheme="Default" FontWeight="Bold" />
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="Field's" Margin="70,10,20,10" Width="131"/>
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="Arne Jacobsens Allé 12" Margin="10,10,20,10" Width="178" FontSize="17"/>
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="2300 København S" Margin="20,10,20,10"/>
         </StackPanel>
@@ -47,9 +47,9 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="vertical" Margin="0,565,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="               Have a question?"/>
+            <TextBlock Text="Have a question?" Margin="60,0,0,0"/>
             <TextBlock Text="You are welcome to call the help desk" Width="242" RenderTransformOrigin="0.412,0.432"/>
-            <TextBlock Text="      Eveyday between 10:00-20:00"/>
+            <TextBlock Text=" Eveyday between 10:00-20:00" Margin="30,0,0,0"/>
         </StackPanel>
 
     </Grid>

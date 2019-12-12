@@ -1,15 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace FieldsApp.Model
 {
-     public class StoresCatalog
+    public class StoresCatalog
     {
-        public static ObservableCollection<Stores> _StoresCollection = new ObservableCollection<Stores>
+        private static StoresCatalog _instance = null;
+        private const string _fileName = "Data.Json";
+        private readonly StorageFolder _storageFolder = ApplicationData.Current.LocalFolder;
+
+        public ObservableCollection<Stores> _StoresCollection = new ObservableCollection<Stores>
         {
             new Stores("Bolia","# 30368964", "www.bolia.com","10.00-20.00","Home","..\\Assets\\bolia.jpeg"),
             new Stores("Bounce", "# 78700900","www.bounceinc.dk","10.00-20.00","Entertainment", "..\\Assets\\bounce.jpeg"),
@@ -22,20 +29,14 @@ namespace FieldsApp.Model
             new Stores("Name it","# 32621242", "www.name-it.com", "10.00-20.00", "kids", "..\\Assets\\nameit.png" ),
             new Stores("Kaufmann", "# 32620034","www.kaufmann.dk","10.00-20.00", "Men", "..\\Assets\\kaufmann.jpeg"),
             new Stores("Bilka", "# 89303333", "www.Bilka.dk", "06.00-24.00", "Food Store","..\\Assets\\bilka.jpeg")
-            
-            
+
+
         };
 
+        private StoresCatalog() { }
         public ObservableCollection<Stores> Stores => _StoresCollection;
 
-        public ObservableCollection<Stores> _stores
-        {
-            get { return _stores; }
-        }
-
-        private static StoresCatalog _instance = null;
-       
-        private static StoresCatalog Instance
+        public static StoresCatalog Instance
         {
             get
             {
@@ -46,8 +47,8 @@ namespace FieldsApp.Model
                 return _instance;
             }
         }
-       
-        
+
+
         public void AddStore(Stores s)
         {
             _StoresCollection.Add(s);
@@ -55,10 +56,23 @@ namespace FieldsApp.Model
 
         public void Delete(string name)
         {
-             
-            var Stores = _StoresCollection.FirstOrDefault(s => s.Name == name);
+           var Stores = _StoresCollection.FirstOrDefault(s => s.Name == name);
             _StoresCollection.Remove(Stores);
         }
 
+
+        public async Task SaveToFile()
+        {
+            string Json = JsonConvert.SerializeObject(_StoresCollection);
+            await FileIO.WriteTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.OpenIfExists), Json);
+        }
+
+        public async Task LoadDomainObjects()
+        {
+            string Stores = await FileIO.ReadTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.OpenIfExists));
+             _StoresCollection = JsonConvert.DeserializeObject<ObservableCollection<Stores>>(Stores);
+        }
+
     }
+
 }

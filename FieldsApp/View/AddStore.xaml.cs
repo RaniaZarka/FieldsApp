@@ -29,7 +29,7 @@ namespace FieldsApp.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            AddFrame.Navigate(typeof(AddStore));
 
         }
 
