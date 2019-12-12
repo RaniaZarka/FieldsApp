@@ -66,5 +66,21 @@ namespace FieldsApp
             ContentFrame.Navigate(typeof(AddStore));
             SplitView.IsPaneOpen = false;
         }
+
+        private void Game_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(Game));
+            SplitView.IsPaneOpen = false;
+        }
+
+        private void ContentFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+
+        }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -65,7 +65,7 @@
                         Name="Events" Click="Events_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF133;"/>
-                            <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Events" /></TextBlock>
+                            <TextBlock Margin="19,0" VerticalAlignment="Center" SelectionChanged="TextBlock_SelectionChanged"><Run Text="Events" /></TextBlock>
                         </StackPanel>
                     </Button>
                     <Button
@@ -79,7 +79,7 @@
                     </Button>
                     <Button
                         Name="Game"
-                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
+                        Click ="Game_Click" Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7FC;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Game" /></TextBlock>
@@ -105,7 +105,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame Name="ContentFrame"/>
+                <Frame Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
             </SplitView.Content>
 
         </SplitView>

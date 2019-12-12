@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="FieldsApp.View.Game"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FieldsApp.View"
+    xmlns:viewModel="using:FieldsApp.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush/>
+    </Page.Background>
+
+    <Page.DataContext>
+        <viewModel:GameViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="#FF617783">
+        <TextBox x:Name="GuessNumber" HorizontalAlignment="Left" Margin="50,127,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="402" PlaceholderText="PRESS START" Background="#E5FFFFFF" BorderBrush="{x:Null}" Height="36" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <CompositeTransform SkewX="0" TranslateX="0"/>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="btnGuess" Content="GUESS" Margin="267,224,0,0" VerticalAlignment="Top" Width="186" Click="btnGuess_Click" Background="#FF326C50" Foreground="White"/>
+        <Button x:Name="Start" Content="START" Margin="51,224,0,0" VerticalAlignment="Top" Width="187" Click="Start_Click" Background="#F6141717" FocusVisualPrimaryBrush="{x:Null}" Foreground="White"/>
+        <TextBlock x:Name="Answer" HorizontalAlignment="Left" Margin="202,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="98" Foreground="White"/>
+        <TextBlock x:Name="Score" HorizontalAlignment="Left" Margin="202,274,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="98" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="93,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="351" Height="137" Foreground="White" SelectionChanged="TextBlock_SelectionChanged_1"><Run Text="1. Press a START button to start the game"/><LineBreak/><Run Text="2. Enter your number in the text box from 1 to 100"/><LineBreak/><Run Text="3. Press a GUESS button "/><LineBreak/><Run Text="4. Try one more time, if the answer is not correct"/><LineBreak/><Run Text="5. When you guess a number, press a START button again if you wish to play one more time"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="173,330,0,0" Text="HOW TO PLAY" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontWeight="Bold" FontSize="20" Height="29" Width="159" Foreground="#FFF9EEEE"/>
+        <TextBlock HorizontalAlignment="Left" Margin="124,58,0,0" Text="&quot;GUESS A NUMBER&quot; GAME" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontWeight="Bold" FontSize="20" Height="29" Width="293" Foreground="White"/>
+
+
+
+    </Grid>
+</Page>
