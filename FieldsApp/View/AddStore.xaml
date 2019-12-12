@@ -104,8 +104,8 @@
 
         </StackPanel>
 
-        <Image
-            Name="ImageViewer" Margin="242,184,10,184" Grid.ColumnSpan="2" />
-
+       
+            <Frame Name="AddFrame"/>
+        
     </Grid>
 </Page>

@@ -31,7 +31,7 @@
         <StackPanel Orientation="Horizontal">
 
             <StackPanel>
-                <ListView ItemsSource="{Binding StoreCollection}" SelectedItem="{Binding SelectedStore, Mode= TwoWay}" Width="210" RenderTransformOrigin="0.333,0.5" Height="775">
+                <ListView ItemsSource="{Binding StoreCollection}" SelectedItem="{Binding SelectedStore, Mode= TwoWay}" Width="210" RenderTransformOrigin="0.333,0.5" Height="758">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
