@@ -128,7 +128,6 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UsersCatalog.cs" />
     <Compile Include="ViewModel\EventsViewModel.cs" />
-    <Compile Include="ViewModel\GameViewModel.cs" />
     <Compile Include="ViewModel\StoresViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
     <Compile Include="View\AccountPage.xaml.cs">
@@ -165,7 +164,12 @@
   <ItemGroup>
     <Content Include="Assets\34195444_10155093929295904_5316082262951854080_n.jpg" />
     <Content Include="Assets\asdgtrfhujkl.png" />
+    <Content Include="Assets\bbbg.png" />
     <Content Include="Assets\benny.JPG" />
+    <Content Include="Assets\bg.png" />
+    <Content Include="Assets\bgbg.png" />
+    <Content Include="Assets\bgg.png" />
+    <Content Include="Assets\bg_F.png" />
     <Content Include="Assets\bilka.jpeg" />
     <Content Include="Assets\BlackFriday.jpg" />
     <Content Include="Assets\bolia.jpeg" />
@@ -173,6 +177,7 @@
     <Content Include="Assets\BR.jpg" />
     <Content Include="Assets\burgerking.jpeg" />
     <Content Include="Assets\Dalle-Valle.jpeg" />
+    <Content Include="Assets\dg.png" />
     <Content Include="Assets\FB.png" />
     <Content Include="Assets\fields logo.png" />
     <Content Include="Assets\Fields.jpeg" />
@@ -183,9 +188,11 @@
     <Content Include="Assets\kaufmann.jpeg" />
     <Content Include="Assets\magasin.png" />
     <Content Include="Assets\matas.jpeg" />
+    <Content Include="Assets\name.png" />
     <Content Include="Assets\nameit.png" />
+    <Content Include="Assets\naname.png" />
+    <Content Include="Assets\nmnmnm.png" />
     <Content Include="Assets\Ny_1.jpg" />
-    <Content Include="Assets\question-background.png" />
     <Content Include="Assets\SummerSale.jpg" />
     <Content Include="Assets\welcome-to-field-s-383.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
