@@ -121,12 +121,14 @@
     </Compile>
     <Compile Include="Common\DeleteCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\EventCatalog.cs" />
     <Compile Include="Model\Events.cs" />
     <Compile Include="Model\Stores.cs" />
     <Compile Include="Model\StoresCatalog.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UsersCatalog.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\EventsViewModel.cs" />
     <Compile Include="ViewModel\StoresViewModel.cs" />
     <Compile Include="ViewModel\UsersViewModel.cs" />
@@ -135,6 +137,9 @@
     </Compile>
     <Compile Include="View\AddStore.xaml.cs">
       <DependentUpon>AddStore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Events.xaml.cs">
       <DependentUpon>Events.xaml</DependentUpon>
@@ -214,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
