@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Common\DeleteCommand.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\EventCatalog.cs" />
     <Compile Include="Model\Events.cs" />
     <Compile Include="Model\Stores.cs" />

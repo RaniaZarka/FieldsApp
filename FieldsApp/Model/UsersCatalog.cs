@@ -27,8 +27,7 @@ namespace FieldsApp.Model
 
         private ObservableCollection<User> _users = new ObservableCollection<User>
         {
-            new User("Sven", "Svensson", "+46 11 111 11 11", "asd@gmail.com", "1234"),
-            new Admin("Lars", "Larssen", "12121212", "123@gmail.com", "123")
+            new User("Sven", "Svensson", "+46 11 111 11 11", "asd@gmail.com", "1234")
         };
         public ObservableCollection<User> Users => _users;
 
@@ -67,16 +66,6 @@ namespace FieldsApp.Model
         {
             CurrentUser = null;
         }
-
-        /*public void AddFavStore(User loggedinUser, Stores storeToAdd)
-        {
-            loggedinUser.FavouriteStores.Add(storeToAdd);
-        }
-
-        public void RemoveFavStore(User loggedinUser, Stores storeToRemove)
-        {
-            loggedinUser.FavouriteStores.Remove(storeToRemove);
-        }*/
     }
 }
 

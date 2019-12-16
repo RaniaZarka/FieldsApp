@@ -5,13 +5,8 @@
     xmlns:local="using:FieldsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="using:FieldsApp.ViewModel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Page.DataContext>
-        <viewModel:UsersViewModel/>
-    </Page.DataContext>
 
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
@@ -92,7 +87,7 @@
                     </Button>
                     <Button
                         Name="Admin"
-                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="Admin_Click" Visibility="{Binding AdminButtonVisibility}">
+                        Style="{StaticResource ButtonStyle}" HorizontalContentAlignment="Left" Click="Admin_Click">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8CF;"/>
                             <TextBlock Margin="19,0" VerticalAlignment="Center"><Run Text="Admin" /></TextBlock>
