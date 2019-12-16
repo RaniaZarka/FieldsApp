@@ -95,10 +95,7 @@
                     Command="{Binding AddStoreCommand}"
                     Content="Add"
                     Style="{StaticResource ButtonStyle}" Click="Button_Click" />
-                <Button
-                    Command="{Binding DeleteStoreCommand}"
-                    Content="Delete"
-                    Style="{StaticResource ButtonStyle}" Click="Button_Click" />
+               
 
             </StackPanel>
 
