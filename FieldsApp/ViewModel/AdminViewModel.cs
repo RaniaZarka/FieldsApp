@@ -12,7 +12,9 @@ namespace FieldsApp.ViewModel
         private Admin admin;
 
         public AdminViewModel()
-        { }
+        {
+            admin = new Admin();
+        }
 
         public bool CanEnter(string username, string password)
         {

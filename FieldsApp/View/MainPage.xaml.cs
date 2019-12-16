@@ -63,7 +63,7 @@ namespace FieldsApp
 
         private void Admin_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(AddStore));
+            ContentFrame.Navigate(typeof(Admin));
             SplitView.IsPaneOpen = false;
         }
 
