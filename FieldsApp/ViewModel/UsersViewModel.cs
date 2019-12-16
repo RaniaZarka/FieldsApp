@@ -49,6 +49,8 @@ namespace FieldsApp.ViewModel
         private string _editLastName;
         private string _editPhoneNumber;
 
+        private Visibility _adminButtonVisibility = Visibility.Collapsed;
+
         public UsersViewModel()
         {
             //Checks if there is a logged in user to make sure that you don't see the login page again after changing pages
@@ -57,6 +59,12 @@ namespace FieldsApp.ViewModel
                 LoginFieldsVisibility = Visibility.Collapsed;
                 UserInfoVisibility = Visibility.Visible;
             }
+
+            if (LoggedInUser != null && LoggedInUser.GetType() == typeof(Admin))
+            {
+                AdminButtonVisibility = Visibility.Visible;
+            }
+
             _usersCatalog = UsersCatalog.Instance;
             LogInCommand = new RelayCommand(LogIn);
             LogOutCommand = new RelayCommand(LogOut);
@@ -305,6 +313,16 @@ namespace FieldsApp.ViewModel
             }
         }
 
+        public Visibility AdminButtonVisibility
+        {
+            get { return _adminButtonVisibility; }
+            set
+            {
+                _adminButtonVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand LogInCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
@@ -327,12 +345,16 @@ namespace FieldsApp.ViewModel
                 LoginFieldsVisibility = Visibility.Collapsed;
                 RegisterConfirmationVisibility = Visibility.Collapsed;
                 UserInfoVisibility = Visibility.Visible;
+
+                CheckIfAdmin();
             }
             else
             {
                 LoginErrorVisibility = Visibility.Visible;
                 UserEmail = null;
                 UserPassword = null;
+
+                AdminButtonVisibility = Visibility.Collapsed;
             }
         }
 
@@ -479,6 +501,14 @@ namespace FieldsApp.ViewModel
             PasswordConfirmErrorVisibility = Visibility.Collapsed;
             AgreementErrorVisibility = Visibility.Collapsed;
             LoginErrorVisibility = Visibility.Collapsed;
+        }
+
+        private void CheckIfAdmin()
+        {
+            if (LoggedInUser != null && LoggedInUser is Admin)
+            {
+                AdminButtonVisibility = Visibility.Visible;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
