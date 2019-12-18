@@ -344,7 +344,7 @@ namespace FieldsApp.ViewModel
             UserInfoVisibility = Visibility.Collapsed;
         }
 
-        public void RegisterUser()
+        public async void RegisterUser()
         {
             CollapseAllErrors();
             //Checks if string only contains letters
@@ -369,7 +369,7 @@ namespace FieldsApp.ViewModel
                                     if (RegisterAgreement)
                                     {
                                         CollapseAllErrors();
-                                        UsersCatalog.Instance.RegisterUser(RegisterFirstName, RegisterLastName, RegisterPhoneNumber, RegisterEmail, RegisterPassword);
+                                        await UsersCatalog.Instance.RegisterUser(RegisterFirstName, RegisterLastName, RegisterPhoneNumber, RegisterEmail, RegisterPassword);
                                         RegisterVisibility = Visibility.Collapsed;
                                         RegisterFirstName = null;
                                         RegisterLastName = null;
