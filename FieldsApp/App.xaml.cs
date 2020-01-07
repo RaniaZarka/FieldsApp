@@ -32,6 +32,7 @@ namespace FieldsApp
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             UsersCatalog.Instance.LoadDomainObjects();
+            StoresCatalog.Instance.LoadDomainObjects();
         }
 
         /// <summary>

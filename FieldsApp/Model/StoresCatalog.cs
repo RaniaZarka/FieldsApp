@@ -13,7 +13,7 @@ namespace FieldsApp.Model
     public class StoresCatalog
     {
         private static StoresCatalog _instance = null;
-        private const string _fileName = "Data.Json";
+        private const string _fileName = "Stores.Json";
         private readonly StorageFolder _storageFolder = ApplicationData.Current.LocalFolder;
 
         public ObservableCollection<Stores> _StoresCollection = new ObservableCollection<Stores>
@@ -49,28 +49,32 @@ namespace FieldsApp.Model
         }
 
 
-        public void AddStore(Stores s)
+        public async Task AddStore(Stores s)
         {
             _StoresCollection.Add(s);
+            await SaveToFile();
         }
 
-        public void Delete(string name)
+        public async Task Delete(string name)
         {
            var Stores = _StoresCollection.FirstOrDefault(s => s.Name == name);
             _StoresCollection.Remove(Stores);
+            await SaveToFile();
         }
-
 
         public async Task SaveToFile()
         {
-            string Json = JsonConvert.SerializeObject(_StoresCollection);
-            await FileIO.WriteTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.OpenIfExists), Json);
+            string json = JsonConvert.SerializeObject(_StoresCollection);
+            await FileIO.WriteTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.ReplaceExisting), json);
         }
 
         public async Task LoadDomainObjects()
         {
-            string Stores = await FileIO.ReadTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.OpenIfExists));
-             _StoresCollection = JsonConvert.DeserializeObject<ObservableCollection<Stores>>(Stores);
+            string loadedStores = await FileIO.ReadTextAsync(await _storageFolder.CreateFileAsync(_fileName, CreationCollisionOption.OpenIfExists));
+            if (loadedStores != "")
+            {
+                _StoresCollection = JsonConvert.DeserializeObject<ObservableCollection<Stores>>(loadedStores);
+            }
         }
 
     }

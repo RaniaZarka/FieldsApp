@@ -57,9 +57,9 @@ namespace FieldsApp.ViewModel
 
         public ObservableCollection<Stores> StoreCollection => _storesCatalog.Stores;
 
-        public void AddStore()
+        public async void AddStore()
         {
-           _storesCatalog.AddStore(new Stores (Name, Phone, Website, Category, OpeningHours, ImageSource));
+           await _storesCatalog.AddStore(new Stores (Name, Phone, Website, Category, OpeningHours, ImageSource));
             //here i can have an if statement for the admin so only the admin can acces it 
         }
 
